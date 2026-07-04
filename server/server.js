@@ -287,7 +287,7 @@ function startServer() {
   loadConfig();
 
   const server = http.createServer(handleRequest);
-  const port = parseInt(config.port) || 3000;
+  const port = parseInt(process.env.PORT) || parseInt(config.port) || 3000;
 
   // Smart host binding: auto-detect Docker or use config
   const host = config.host || (isRunningInDocker() ? '0.0.0.0' : '127.0.0.1');
